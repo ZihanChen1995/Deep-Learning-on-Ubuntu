@@ -117,3 +117,65 @@ nvcc --version
 ```
 
 Now we reach to the end of Step 1. I'm not sure whether things will change in the future. Always follow the official guidance. Official ones are the best!
+
+# Install CuDNN
+
+This is the deep learning package installation. This step is much easier if you follow the previous steps strictly, and all the cuda files are now under the `usr/local/cuda`. We still have the official guidance [here.](sudo dpkg -i libcudnn7-doc_7.6.4.38-1+cuda10.1_amd64.deb)
+
+1. Go to Nvidia Website and find the [CuDNN download.](https://developer.nvidia.com/rdp/cudnn-archive)
+
+2. Download three files, and find the root path of the saved files.
+
+3. Follow the instructions. The only thing you need to change is that: Go to the saved file directory, then change the name of these files with the files you have.
+```
+#2.3.2. Installing From A Debian File
+# Before issuing the following commands, you'll need to replace x.x and 8.x.x.x with your specific CUDA version and cuDNN version and package date.
+
+# Navigate to your <cudnnpath> directory containing the cuDNN Debian file.
+
+# Install the runtime library, for example:
+sudo dpkg -i libcudnn8_x.x.x-1+cudax.x_amd64.deb
+
+# Install the developer library, for example:
+sudo dpkg -i libcudnn8-dev_8.x.x.x-1+cudax.x_amd64.deb
+
+# Install the code samples and the cuDNN library documentation, for example:
+sudo dpkg -i libcudnn8-doc_8.x.x.x-1+cudax.x_amd64.deb
+```
+
+4. Feel free to test it via MNIST dataset. You may need to change `v8` to `v7`
+```
+Copy the cuDNN sample to a writable path.
+$cp -r /usr/src/cudnn_samples_v8/ $HOME
+
+Go to the writable path.
+$ cd  $HOME/cudnn_samples_v8/mnistCUDNN
+
+Compile the mnistCUDNN sample.
+$make clean && make
+
+Run the mnistCUDNN sample.
+$ ./mnistCUDNN
+
+If cuDNN is properly installed and running on your Linux system, you will see a message similar to the following:
+Test passed!
+```
+
+5. If you want to switch between `v7` and `v8`, check here.
+```
+2.5. Upgrading From v7 To v8
+# Since version 8 can coexist with previous versions of cuDNN, if the user has an older version of cuDNN such as v6 or v7, installing version 8 will not automatically delete an older revision. Therefore, if the user wants the latest version, install cuDNN version 8 by following the installation steps.
+
+# About this task
+
+# To upgrade from v7 to v8 for RHEL, run:
+sudo rpm --upgrade *.rpm
+
+# To upgrade from v7 to v8 for Ubuntu, run:
+sudo dpkg -i libcudnn*.deb
+
+# To switch between v7 and v8 installations, issue 
+sudo update-alternatives --config libcudnn and choose the appropriate cuDNN version.
+```
+
+Step 1 Finished!
