@@ -133,3 +133,24 @@ git push
 ```
 
 This is just very simply usage. For more knowledge, you can check the videos [here](https://www.youtube.com/playlist?list=PLhW3qG5bs-L8OlICbNX9u4MZ3rAt5c5GG). I found them are very useful are clear.
+
+# VS Code
+
+Here is how we can use the VS code through different environment. And this is the main reason why we put lots of efforts on set the vitrual environment. 
+
+1. Download the VS code
+
+Same as we always say. Go to the [official website](https://code.visualstudio.com/docs/setup/linux) and follow the guidance. Here are few steps:
+```
+# download the deb file
+sudo apt install ./<file>.deb
+```
+2. Add the extensions
+
+Few ones I think are necessary: Python, Pretty Formatter, VS IntelliCode
+
+3. Change the path of Env
+
+Here is how you can set the vitrual env. Whenever you're in the workspace, just tap `(Ctrl+Shift+P)` Then choose `Python: Select Interpreter`, then you can find the env you want to use. (Usually you can see the one under you conda env). You can vertify it at the bottom of your visual code. It will show which env you're using now.
+
+4. Oh By the Way, if you already set an env in the workspace, just use `cd` to go there and open with the `code .` . It will defaultly set the env for you.
