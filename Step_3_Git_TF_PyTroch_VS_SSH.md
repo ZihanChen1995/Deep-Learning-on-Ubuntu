@@ -154,3 +154,29 @@ Few ones I think are necessary: Python, Pretty Formatter, VS IntelliCode
 Here is how you can set the vitrual env. Whenever you're in the workspace, just tap `(Ctrl+Shift+P)` Then choose `Python: Select Interpreter`, then you can find the env you want to use. (Usually you can see the one under you conda env). You can vertify it at the bottom of your visual code. It will show which env you're using now.
 
 4. Oh By the Way, if you already set an env in the workspace, just use `cd` to go there and open with the `code .` . It will defaultly set the env for you.
+
+# Enable SSH
+
+If you want to use your Ubuntu as a remote server. Here is an easy way:
+
+```
+# update 
+sudo apt update
+
+# check whether you have the SSH
+sudo systemctl status ssh
+
+# Install the SSH
+sudo apt install openssh-server
+
+# check it again, you should see the activate status
+sudo systemctl status ssh
+
+# now open the firewall 
+sudo ufw allow ssh
+
+# check the ip, use the one under "either ...." NOT the first one
+ip a
+```
+
+Now when you try to remote log into your server, just use the line: `ssh your_ubuntu_username@ubuntu_ip`, then you can log into it.
