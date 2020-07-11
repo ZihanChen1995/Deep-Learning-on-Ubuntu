@@ -73,3 +73,63 @@ conda deactivate
 ```
 
 After all these steps, you have two environments which contains PyTorch and Tensorflow.
+
+# Install Git/Github
+
+I heard from the website that now Ubuntu 20.04 have Github Desktop. Maybe if you are using Ubuntu 20.04 version, you can simply download it. However, if you're still stick to 18.04, just follow the following steps.
+
+### Install Git
+
+Firstly you need to make sure you have git installed on you PC. There are many ways to download it, like through official website or through terminal. However this time I recommend download by `sudo apt install git`. This returns you the version of `2.17.1`, which is the official recommended version. After that, type `gir --version` to vertify the installation.
+
+### Link to your Github
+
+Of course you need to have a Github account. Then use the following line to edit global config.
+```
+# Your User name: Don't need to be the same as your Github account
+# However, for clone or upload, you need the exact one
+# Is one the website link of your github webpage
+git config --global user.name "Zihan Chen"
+
+# Your e-mail address for your Github account
+git config --global user.email "zihanchen1995@gmail.com"
+
+# Vertify it
+nano ~/.gitconfig
+
+# Vertify it
+git config --list
+```
+Now you can do the edit on your desktop. Suppose you want to add a repository on you account. You can build one on Github first (With README.md file, I quite like the preview function. Then you can click on the Code/Download button. It will show you a `http` link. Copy it)
+
+```
+# Copy the link, suppose the link is following
+# https://github.com/ZihanChen1995/Test_Git.git
+
+# Now go to the folder you want to use as local workspace
+cd '/home/zihan/Desktop/test_git' 
+
+# Clone it, you will need you Username and Password (On Github)
+git clone https://github.com/ZihanChen1995/Test_Git.git
+
+# Now you can make changes locally, like add a new py
+touch 1.py
+
+# check the status, you can see it is the red color
+git status
+
+# add it to the tree
+git add 1.py
+# It is in green now
+git status
+
+# Now you can commit it
+git commit 1.py
+# It will not in the workload now, cuz it has been commited
+git status
+
+# update to the Github website
+git push
+```
+
+This is just very simply usage. For more knowledge, you can check the videos [here](https://www.youtube.com/playlist?list=PLhW3qG5bs-L8OlICbNX9u4MZ3rAt5c5GG). I found them are very useful are clear.
