@@ -180,3 +180,22 @@ ip a
 ```
 
 Now when you try to remote log into your server, just use the line: `ssh your_ubuntu_username@ubuntu_ip`, then you can log into it.
+
+# Remote Control Server via VS code
+
+Some of you may want to use your own laptop to connect to Ubuntu server. Here is few modification you need to make. (Since I use Mac, these instruction may only works on Mac OS)
+
+1. Firstly, install `VS code` on you mac, then add the extension `Remote-SSH` on it. (Also `Python MS`)
+
+2. Next step, click on the window looks like option on the left-side-bar, choose to open the remote windows.
+
+3. Oops, you may get a error says you cannot connect to it. Even you input with correct user name and password. Don't worry, click on `More actions`, choose `settings`, `Remote-SSH`. You will see one called `Remote SSH: Config File`. Open it use `nano/vim`, or just use the function `go to folder` and open it.
+
+4. Replace the original one with following: (You can set a new one and redirect the path, of course)
+```
+Host sever-address
+Hostname IP_address_you_get_from_ipa
+User Ubuntu_Log_In_UserName
+```
+
+5. Save it. Close and open the VS code. It should work now.
