@@ -82,7 +82,7 @@ $ pip install torch-spline-conv==latest+cu102 -f https://pytorch-geometric.com/w
 $ pip install torch-geometric
 ```
 
-(Check official guidance if you plan to install from source.I try it by get lots of error)
+(Check official guidance if you plan to install from source.I tried it but get lots of errors)
 
 ## Install Tensorflow
 
