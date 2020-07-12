@@ -19,7 +19,7 @@ As a beginner, I have wasted tons of time on how to set the enviroment on Ubuntu
 
 - Set Virtral Environments.
 
-- Install PyTorch.
+- Install PyTorch.(PyTorch-Geometric)
 
 - Install Tensorflow.
 
