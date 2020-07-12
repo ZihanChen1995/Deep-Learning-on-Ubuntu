@@ -51,6 +51,39 @@ conda deactivate
 
 ```
 
+Also, if you're insterested in GNNs analysis, PyTorch Geometric is a great package for GNN implementation. Here is the [official guidance](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html).
+
+Installing through Binaries is the safer and stable way, hence you should try it first. If you are using PyTorch as `1.5.1` which is higher that 1.5.0 and cannot find the matched version on Binaries, just use 1.5.0. [It also works perfectly.](https://github.com/rusty1s/pytorch_geometric/issues/1419)
+
+```
+# Ensure that at least PyTorch 1.4.0 is installed:
+$ python -c "import torch; print(torch.__version__)"
+>>> 1.5.0
+
+# Find the CUDA version PyTorch was installed with:
+$ python -c "import torch; print(torch.version.cuda)"
+>>> 10.2
+
+# Install the relevant packages:
+$ pip install torch-scatter==latest+${CUDA} -f https://pytorch-geometric.com/whl/torch-${TORCH}.html
+$ pip install torch-sparse==latest+${CUDA} -f https://pytorch-geometric.com/whl/torch-${TORCH}.html
+$ pip install torch-cluster==latest+${CUDA} -f https://pytorch-geometric.com/whl/torch-${TORCH}.html
+$ pip install torch-spline-conv==latest+${CUDA} -f https://pytorch-geometric.com/whl/torch-${TORCH}.html
+$ pip install torch-geometric
+```
+
+where ${CUDA} and ${TORCH} should be replaced by your specific CUDA version (cpu, cu92, cu101, cu102) and PyTorch version (1.4.0, 1.5.0), respectively. For example, for PyTorch 1.5.0 and CUDA 10.2, type:
+
+```
+$ pip install torch-scatter==latest+cu102 -f https://pytorch-geometric.com/whl/torch-1.5.0.html
+$ pip install torch-sparse==latest+cu102 -f https://pytorch-geometric.com/whl/torch-1.5.0.html
+$ pip install torch-cluster==latest+cu102 -f https://pytorch-geometric.com/whl/torch-1.5.0.html
+$ pip install torch-spline-conv==latest+cu102 -f https://pytorch-geometric.com/whl/torch-1.5.0.html
+$ pip install torch-geometric
+```
+
+(Check official guidance if you plan to install from source.I try it by get lots of error)
+
 ## Install Tensorflow
 
 Well many people may say Tensorflow 1 series is better. However I hold the oppsite idea for two reasons. First, we can easily achieve all functions that can be achieve in TF1 by `import tensorflow.compat.v1 as tf`. Second, TF2 combine the GPU version and CPU one. You can check the website [here](https://www.tensorflow.org/install/pip)
