@@ -232,3 +232,55 @@ User Ubuntu_Log_In_UserName
 ```
 
 5. Save it. Close and open the VS code. It should work now.
+
+# Open jupyter notebook remotely
+
+Sometimes you may only want to use jupyter notebook remotely. Here are few things you need to concern with:
+
+1. Make sure jupyter notebook has record the vitural environment you've installed with. To achieve that, you just need to activate the env, download jupyter notebook inside it, and append it to the jupyter notebook. Just follow the following steps:
+
+```
+# create and activate the env
+conda create --name firstEnv
+conda activate firstEnv
+
+# install necessary packages
+conda install -c anaconda ipykernel
+python -m ipykernel install --user --name=firstEnv
+
+# install jupyter notebook and test it
+conda install jupyter
+jupyter notebook 
+
+# if you only use step 5,6. the env won't show there
+# https://stackoverflow.com/questions/58068818/how-to-use-jupyter-notebooks-in-a-conda-environment
+# (not 100% correct)
+```
+
+After these steps, you can have the jupyter notebook that contains all conda vitrual environment, and you can simply activate anyone when you create a new notebook.
+
+2. Suppose you have a laptop, how can you link it to your Ubuntu server and use jupyter notebook directly? Feel free to check these links:
+- [Open remotely, instruction](https://amber-md.github.io/pytraj/latest/tutorials/remote_jupyter_notebook)
+- [Video with install ssh](https://www.youtube.com/watch?v=qeJUsahqzw8&list=LL5ZUTgX4f40GgNwbd5Wecjw&index=2&t=395s)
+
+Or you can simply follow these steps:
+```
+# go to the directory on your server
+cd 'Path_to_target_dir'
+
+# open it without browser, but use broadcast port instead
+jupyter notebook --no-browser --port=8889
+
+# now you can open it with your own laptop
+ssh -N -f -L localhost:8888:localhost:8889 username@your_remote_host_name
+
+# open any browser, type in localhost:8888
+```
+Of course you need to install jupyter notebook both on your local and server. By the way, if you log in the first time, it repuires you input the token. It's in the html link, which says `token=......` just copy and paste it. For further instruction, check [here](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html).
+
+Another thing you may meet is that if you disconnected by mistake, when you reconnect, it may say: `bind: Address already in use channel_setup_fwd_listener_tcpip: cannot listen to port: 8888 Could not request local forwarding.` To solve this, just kill the port and connect with it again with:
+```
+lsof -ti:8888 | xargs kill -9
+ssh -N -f -L localhost:8888:localhost:8889 zihan@192.168.1.232
+```
+It should works now. (check the link [here](https://askubuntu.com/questions/447820/ssh-l-error-bind-address-already-in-use))
