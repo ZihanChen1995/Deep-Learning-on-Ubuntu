@@ -284,3 +284,30 @@ lsof -ti:8888 | xargs kill -9
 ssh -N -f -L localhost:8888:localhost:8889 zihan@192.168.1.232
 ```
 It should works now. (check the link [here](https://askubuntu.com/questions/447820/ssh-l-error-bind-address-already-in-use))
+
+(Here are some additional notes)
+
+If you wanna swift to a new directory as your work space, you may find even you start `jupyter notebook --no-browser --port=8889` under your new directory, it still directs you to the previous one. This is because the previous Jupyter Notebook server still occupies the port 8889 in the backend of server. `lsof -ti:8888 | xargs kill -9` locally won't work because it only kills process on your local computer which listens from the server. [Question Link](https://github.com/Amber-MD/pytraj/issues/1546)
+
+To slove this, you need to stop the port on server. Look at following:
+
+```
+# check the jupyter notebook status
+# normally it occupies 8888, but you map it to 8889
+jupyter notebook list
+
+# you can also check all process
+# you will find this process in the desctiption
+ps ux
+
+# now, just stop the server, you will see there is no running server now
+jupyter notebook stop 8889
+jupyter notebook list
+
+# then you can swift to new directory, and start the work again
+cd Desktop/New_dir
+jupyter notebook --no-browser --port=8889
+# and locally:
+ssh -N -f -L localhost:8888:localhost:8889 zihan@192.168.1.232
+localhost:8888 # in browser
+```
