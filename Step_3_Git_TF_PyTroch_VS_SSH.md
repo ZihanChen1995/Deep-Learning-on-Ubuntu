@@ -281,7 +281,7 @@ Of course you need to install jupyter notebook both on your local and server. By
 Another thing you may meet is that if you disconnected by mistake, when you reconnect, it may say: `bind: Address already in use channel_setup_fwd_listener_tcpip: cannot listen to port: 8888 Could not request local forwarding.` To solve this, just kill the port and connect with it again with:
 ```
 lsof -ti:8888 | xargs kill -9
-ssh -N -f -L localhost:8888:localhost:8889 zihan@192.168.1.232
+ssh -N -f -L localhost:8888:localhost:8889 username@your_remote_host_name
 ```
 It should works now. (check the link [here](https://askubuntu.com/questions/447820/ssh-l-error-bind-address-already-in-use))
 
@@ -308,6 +308,6 @@ jupyter notebook list
 cd Desktop/New_dir
 jupyter notebook --no-browser --port=8889
 # and locally:
-ssh -N -f -L localhost:8888:localhost:8889 zihan@192.168.1.232
+ssh -N -f -L localhost:8888:localhost:8889 username@your_remote_host_name
 localhost:8888 # in browser
 ```
