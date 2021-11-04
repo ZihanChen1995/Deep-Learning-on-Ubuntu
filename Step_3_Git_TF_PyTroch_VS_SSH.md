@@ -213,6 +213,7 @@ ip a
 ```
 
 Now when you try to remote log into your server, just use the line: `ssh your_ubuntu_username@ubuntu_ip`, then you can log into it.
+(If you reset the Wi-Fi or change to a new network, just check the `ip a` again. Update the old ip address with new one can simply solve the problem.)
 
 # Remote Control Server via VS code
 
@@ -232,6 +233,7 @@ User Ubuntu_Log_In_UserName
 ```
 
 5. Save it. Close and open the VS code. It should work now.
+6. If you reset the Wi-Fi or change to a new network, just check the `ip a` again. Update the old ip address in `config` with new one can simply solve the problem.
 
 # Open jupyter notebook remotely
 
